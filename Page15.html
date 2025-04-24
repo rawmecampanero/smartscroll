@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=809, height=641, initial-scale=1.0" />
+  <title>Page 15</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      width: 809px;
+      height: 641px;
+      box-sizing: border-box;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .form-container {
+      padding: 30px;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+      cursor: pointer;
+      align-self: flex-start;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="form">
+      <div class="form-group">
+        <label>New insights I’ve gained:</label>
+        <textarea id="insights" placeholder="Write your reflection here." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>One action I can take to improve in this area:</label>
+        <textarea id="action" placeholder="Write your reflection here." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>To carry out this action, I need the following resources / support from the following people:</label>
+        <textarea id="support" placeholder="Write your reflection here." required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const pageId = "page15_reflection";
+
+    const storedData = JSON.parse(localStorage.getItem(pageId) || "{}");
+    if (storedData.insights) document.getElementById("insights").value = storedData.insights;
+    if (storedData.action) document.getElementById("action").value = storedData.action;
+    if (storedData.support) document.getElementById("support").value = storedData.support;
+
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const insights = document.getElementById("insights").value.trim();
+      const action = document.getElementById("action").value.trim();
+      const support = document.getElementById("support").value.trim();
+
+      localStorage.setItem(
+        pageId,
+        JSON.stringify({ insights, action, support })
+      );
+      alert("Reflection saved!");
+    });
+  </script>
+</body>
+</html>

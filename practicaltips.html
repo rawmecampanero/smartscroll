@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Leadership Article Buttons</title>
+  <style>
+    .image-container {
+      position: relative;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .button-link {
+      position: absolute;
+      width: 7%; /* Responsive size: 6% of image width */
+      aspect-ratio: 1 / 1; /* Makes it a perfect circle */
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-left {
+      top: 19.96%;   /* 92px of 461px */
+      left: 8%;   /* 89px of 1166px */
+    }
+
+    .btn-right {
+      top: 19.96%;   /* same vertical position */
+      left: 57%;  /* 742px of 1166px */
+    }
+  </style>
+</head>
+<body>
+
+<div class="image-container">
+  <img src="Asset 571EP.png" alt="Leadership Articles">
+
+  <!-- Forbes article button -->
+  <a href="https://www.forbes.com/sites/glennllopis/2014/01/20/7-ways-leaders-maintain-their-composure-in-difficult-times/" 
+     target="_blank" 
+     class="button-link btn-left" 
+     aria-label="Read Forbes article on leadership composure"></a>
+
+  <!-- McKinsey article button -->
+  <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/how-to-demonstrate-calm-and-optimism-in-a-crisis" 
+     target="_blank" 
+     class="button-link btn-right" 
+     aria-label="Read McKinsey article on calm leadership in crisis"></a>
+</div>
+
+</body>
+</html>

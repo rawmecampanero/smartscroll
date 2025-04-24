@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=443, height=322, initial-scale=1.0">
+  <title>Page 17</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      width: 443px;
+      height: 322px;
+      box-sizing: border-box;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .form-container {
+      padding: 10px;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.5);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="form">
+      <div class="form-group">
+        <label for="accountability-position">I am currently here on the Accountability Ladder:</label>
+        <textarea id="accountability-position" placeholder="Write your answer here." required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="climb-action">What can I do to climb up the Accountability Ladder:</label>
+        <textarea id="climb-action" placeholder="Write your answer here." required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const pageId = "page17";
+    const storedData = JSON.parse(localStorage.getItem(pageId) || "{}");
+    if (storedData.accountabilityPosition) document.getElementById("accountability-position").value = storedData.accountabilityPosition;
+    if (storedData.climbAction) document.getElementById("climb-action").value = storedData.climbAction;
+
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const accountabilityPosition = document.getElementById("accountability-position").value.trim();
+      const climbAction = document.getElementById("climb-action").value.trim();
+      localStorage.setItem(pageId, JSON.stringify({ accountabilityPosition, climbAction }));
+      alert("Your responses are saved!");
+    });
+  </script>
+</body>
+</html>

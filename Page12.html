@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=333, height=485, initial-scale=1.0" />
+  <title>Page 12</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      width: 333px;
+      height: 485px;
+      box-sizing: border-box;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .form-container {
+      padding: 15px;
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.label-group {
+      margin-bottom: 4px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    textarea {
+      resize: none;
+      height: 85px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.5);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    button {
+      margin-top: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="form">
+      <div class="form-group label-group">
+        <label>What are my three words? They should be authentic, and convey both warmth and competence.</label>
+      </div>
+      <div class="form-group">
+        <textarea id="word1" placeholder="Write your first word here." pattern="[A-Za-z\s'-]+" required></textarea>
+      </div>
+      <div class="form-group">
+        <textarea id="word2" placeholder="Write your second word here." pattern="[A-Za-z\s'-]+" required></textarea>
+      </div>
+      <div class="form-group">
+        <textarea id="word3" placeholder="Write your third word here." pattern="[A-Za-z\s'-]+" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const pageId = "page12";
+    const storedData = JSON.parse(localStorage.getItem(pageId) || "{}");
+    if (storedData.word1) document.getElementById("word1").value = storedData.word1;
+    if (storedData.word2) document.getElementById("word2").value = storedData.word2;
+    if (storedData.word3) document.getElementById("word3").value = storedData.word3;
+
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const word1 = document.getElementById("word1").value.trim();
+      const word2 = document.getElementById("word2").value.trim();
+      const word3 = document.getElementById("word3").value.trim();
+      localStorage.setItem(pageId, JSON.stringify({ word1, word2, word3 }));
+      alert("Your three words are saved!");
+    });
+  </script>
+</body>
+</html>

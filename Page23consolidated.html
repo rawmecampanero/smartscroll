@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1106, height=685, initial-scale=1.0" />
+  <title>Page 23</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      width: 1106px;
+      height: 685px;
+      box-sizing: border-box;
+      background: #fff;
+    }
+
+    .content-wrapper {
+      padding: 0;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    table {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      vertical-align: middle;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    th {
+      background-color: #19437f;
+      color: white;
+    }
+
+    th:first-child {
+      background-color: transparent;
+    }
+
+    .row-title {
+      background-color: rgba(188, 190, 204, 0.5);
+      color: black;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .data-cell {
+      background-color: rgba(255, 255, 255, 0.5);
+      overflow-y: auto;
+      text-align: left;
+      height: calc((100% - 44px) / 5);
+      max-height: calc((100% - 44px) / 5);
+    }
+
+    .download-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 15px;
+      margin-top: 10px;
+    }
+
+    .download-button {
+      background-color: #1D437E;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <table>
+      <tr>
+        <th></th>
+        <th>Key Learnings</th>
+        <th>Actions</th>
+        <th>Resource and Support Needed</th>
+      </tr>
+      <tr>
+        <td class="row-title">Composure</td>
+        <td class="data-cell" id="p5_input1"></td>
+        <td class="data-cell" id="p5_input2"></td>
+        <td class="data-cell" id="p5_input3"></td>
+      </tr>
+      <tr>
+        <td class="row-title">Connection</td>
+        <td class="data-cell" id="p10_input1"></td>
+        <td class="data-cell" id="p10_input2"></td>
+        <td class="data-cell" id="p10_input3"></td>
+      </tr>
+      <tr>
+        <td class="row-title">Charisma</td>
+        <td class="data-cell" id="p15_insights"></td>
+        <td class="data-cell" id="p15_action"></td>
+        <td class="data-cell" id="p15_support"></td>
+      </tr>
+      <tr>
+        <td class="row-title">Confidence & Credibility</td>
+        <td class="data-cell" id="p18_insights"></td>
+        <td class="data-cell" id="p18_action"></td>
+        <td class="data-cell" id="p18_support"></td>
+      </tr>
+      <tr>
+        <td class="row-title">Clarity and Conciseness</td>
+        <td class="data-cell" id="p21_insights"></td>
+        <td class="data-cell" id="p21_action"></td>
+        <td class="data-cell" id="p21_support"></td>
+      </tr>
+    </table>
+    <div class="download-container">
+      <button class="download-button" onclick="downloadAsPDF()">
+        <span>⬇</span> Download
+      </button>
+      <span>Download your reflection here.</span>
+    </div>
+  </div>
+
+  <script>
+    function populateDataFromStorage(page, keys, prefix) {
+      const data = JSON.parse(localStorage.getItem(page) || '{}');
+      keys.forEach((key, index) => {
+        const cell = document.getElementById(`${prefix}_${key}`);
+        if (cell) cell.innerText = data[key] || '';
+      });
+    }
+
+    populateDataFromStorage('page5', ['input1', 'input2', 'input3'], 'p5');
+    populateDataFromStorage('page10', ['input1', 'input2', 'input3'], 'p10');
+    populateDataFromStorage('page15', ['insights', 'action', 'support'], 'p15');
+    populateDataFromStorage('page18', ['insights', 'action', 'support'], 'p18');
+    populateDataFromStorage('page21', ['insights', 'action', 'support'], 'p21');
+
+    async function downloadAsPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+      const logoImg = new Image();
+      logoImg.src = 'logo.png';
+      logoImg.onload = function () {
+        doc.addImage(logoImg, 'PNG', 80, 10, 50, 15);
+        doc.setFont('helvetica');
+        doc.setFontSize(14);
+        doc.text("Consolidated Self-Reflection", 105, 30, null, null, 'center');
+
+        const preText = `This table captures your key learnings, action steps, and required support based on your reflections across various leadership domains. Use this summary to track your personal development and seek accountability where needed.`;
+        const splitText = doc.splitTextToSize(preText, 180);
+        doc.setFontSize(10);
+        doc.text(splitText, 15, 40);
+
+        const tableRows = [];
+        const headers = ["", "Key Learnings", "Actions", "Resources/Support"];
+
+        const rows = [
+          ["Composure", 'p5_input1', 'p5_input2', 'p5_input3'],
+          ["Connection", 'p10_input1', 'p10_input2', 'p10_input3'],
+          ["Charisma", 'p15_insights', 'p15_action', 'p15_support'],
+          ["Confidence & Credibility", 'p18_insights', 'p18_action', 'p18_support'],
+          ["Clarity and Conciseness", 'p21_insights', 'p21_action', 'p21_support']
+        ];
+
+        rows.forEach(([label, id1, id2, id3]) => {
+          const cell1 = document.getElementById(id1)?.innerText || "—";
+          const cell2 = document.getElementById(id2)?.innerText || "—";
+          const cell3 = document.getElementById(id3)?.innerText || "—";
+          tableRows.push([label, cell1, cell2, cell3]);
+        });
+
+        doc.autoTable({
+          head: [headers],
+          body: tableRows,
+          startY: 60,
+          styles: { fontSize: 8, cellPadding: 3 },
+          headStyles: { fillColor: [25, 67, 127], textColor: 255 },
+          bodyStyles: { fillColor: [255, 255, 255, 0.5] },
+          columnStyles: { 0: { cellWidth: 40 }, 1: { cellWidth: 50 }, 2: { cellWidth: 50 }, 3: { cellWidth: 50 } },
+          theme: 'grid'
+        });
+
+        doc.save("reflection-summary.pdf");
+      };
+    }
+  </script>
+</body>
+</html>
