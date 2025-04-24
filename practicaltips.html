@@ -9,13 +9,16 @@
       background-color: white;
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     .image-container {
       position: relative;
       width: 100%;
-      max-width: 583px; /* Half of original image width */
+      max-width: 729px; /* 583px * 1.25 = 728.75px */
       background-color: white;
     }
 
@@ -27,7 +30,7 @@
 
     .button-link {
       position: absolute;
-      width: 14%; /* Double the % size since container is half-width */
+      width: 11.28%; /* 88 / 729 * 100 */
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       cursor: pointer;
@@ -35,12 +38,12 @@
 
     .btn-left {
       top: 19.96%;
-      left: 15.26%; /* 89 / 583 * 100 */
+      left: 12.21%; /* 89 / 729 * 100 */
     }
 
     .btn-right {
       top: 19.96%;
-      left: 63.8%; /* Approx. half of 742px's original left offset */
+      left: 63.7%; /* adjusted proportionally for new width */
     }
   </style>
 </head>
