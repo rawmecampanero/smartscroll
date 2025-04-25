@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=671, height=354, initial-scale=1.0" />
+  <meta name="viewport" content="width=506, height=269, initial-scale=1.0" />
   <title>Page 2</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -10,47 +10,52 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      width: 671px;
-      height: 354px;
+      width: 506px;
+      height: 269px;
       box-sizing: border-box;
       background: #fff;
     }
 
     .form-container {
-      padding: 20px;
+      padding: 10px;
       box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
     label {
       display: block;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     textarea {
       width: 100%;
-      height: 60px;
+      height: 50px;
       resize: none;
-      padding: 10px;
-      font-size: 14px;
+      padding: 8px;
+      font-size: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box;
-      background-color: rgba(255, 255, 255, 0.5); /* white with 50% opacity */
+      background-color: rgba(255, 255, 255, 0.5);
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 14px;
+      padding: 8px 16px;
+      font-size: 12px;
       border: none;
       border-radius: 4px;
       background: linear-gradient(to right, #f0f0f0, #e0e0e0);
       cursor: pointer;
+      align-self: flex-start;
     }
   </style>
 </head>
@@ -58,12 +63,12 @@
   <div class="form-container">
     <form id="form">
       <div class="form-group">
-        <label for="input1">Name someone you admire who you would describe as having executive presence:</label>
+        <label for="input1">Name someone you admire with executive presence:</label>
         <textarea id="input1" placeholder="Write your answer here." pattern="[A-Za-z0-9\s.,!?'-]+" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="input2">What do you find compelling about this person? What characteristics do they display?</label>
+        <label for="input2">What makes them compelling?</label>
         <textarea id="input2" placeholder="Write your answer here." pattern="[A-Za-z0-9\s.,!?'-]+" required></textarea>
       </div>
 
@@ -72,7 +77,7 @@
   </div>
 
   <script>
-    const pageId = "page2"; // Page-specific key
+    const pageId = "page2";
 
     const storedData = JSON.parse(localStorage.getItem(pageId) || "{}");
     if (storedData.input1) document.getElementById("input1").value = storedData.input1;
