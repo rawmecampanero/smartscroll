@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=333, height=485, initial-scale=1.0" />
+  <meta name="viewport" content="width=261, height=374, initial-scale=1.0" />
   <title>Page 12</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -10,64 +10,57 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      width: 333px;
-      height: 485px;
+      width: 261px;
+      height: 374px;
       box-sizing: border-box;
-      background: #fff;
+      background: transparent;
       overflow: hidden;
+      font-size: 12px;
     }
 
     .form-container {
-      padding: 15px;
+      padding: 10px;
       box-sizing: border-box;
       height: 100%;
       display: flex;
       flex-direction: column;
+      background: transparent;
     }
 
     form {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group.label-group {
-      margin-bottom: 4px;
+      justify-content: space-between;
     }
 
     label {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 12px;
+      display: block;
     }
 
     textarea {
       resize: none;
-      height: 85px;
-      padding: 10px;
-      font-size: 14px;
+      flex: 1;
+      padding: 8px;
+      font-size: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
       background-color: rgba(255, 255, 255, 0.5);
       font-family: 'Roboto', sans-serif;
+      margin-bottom: 8px;
     }
 
     button {
-      margin-top: 8px;
-      padding: 10px 20px;
-      font-size: 14px;
+      padding: 8px 16px;
+      font-size: 12px;
       border: none;
       border-radius: 6px;
       background: linear-gradient(to right, #f0f0f0, #e0e0e0);
       cursor: pointer;
-      font-family: 'Roboto', sans-serif;
       align-self: flex-start;
     }
   </style>
@@ -75,18 +68,10 @@
 <body>
   <div class="form-container">
     <form id="form">
-      <div class="form-group label-group">
-        <label>What are my three words? They should be authentic, and convey both warmth and competence.</label>
-      </div>
-      <div class="form-group">
-        <textarea id="word1" placeholder="Write your first word here." pattern="[A-Za-z\s'-]+" required></textarea>
-      </div>
-      <div class="form-group">
-        <textarea id="word2" placeholder="Write your second word here." pattern="[A-Za-z\s'-]+" required></textarea>
-      </div>
-      <div class="form-group">
-        <textarea id="word3" placeholder="Write your third word here." pattern="[A-Za-z\s'-]+" required></textarea>
-      </div>
+      <label>What are my three words? They should be authentic, and convey both warmth and competence.</label>
+      <textarea id="word1" placeholder="Write your first word here." pattern="[A-Za-z\s'-]+" required></textarea>
+      <textarea id="word2" placeholder="Write your second word here." pattern="[A-Za-z\s'-]+" required></textarea>
+      <textarea id="word3" placeholder="Write your third word here." pattern="[A-Za-z\s'-]+" required></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
