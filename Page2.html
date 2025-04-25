@@ -26,7 +26,10 @@
     }
 
     .form-group {
-      margin-bottom: 8px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6px;
     }
 
     label {
@@ -37,8 +40,7 @@
     }
 
     textarea {
-      width: 100%;
-      height: 50px;
+      flex: 1;
       resize: none;
       padding: 8px;
       font-size: 12px;
@@ -61,7 +63,7 @@
 </head>
 <body>
   <div class="form-container">
-    <form id="form">
+    <form id="form" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
       <div class="form-group">
         <label for="input1">Name someone you admire with executive presence:</label>
         <textarea id="input1" placeholder="Write your answer here." pattern="[A-Za-z0-9\s.,!?'-]+" required></textarea>
