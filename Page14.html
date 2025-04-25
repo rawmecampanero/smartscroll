@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1037, height=578, initial-scale=1.0" />
+  <meta name="viewport" content="width=784, height=434, initial-scale=1.0" />
   <title>Page 14</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -10,54 +10,63 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      width: 1037px;
-      height: 578px;
+      width: 784px;
+      height: 434px;
       box-sizing: border-box;
-      background: #fff;
+      background: transparent;
       overflow: hidden;
+      font-size: 12px;
     }
 
     .form-container {
-      padding: 30px;
-      box-sizing: border-box;
+      padding: 16px;
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      background: transparent;
+      box-sizing: border-box;
+    }
+
+    form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .form-group {
-      margin-bottom: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 8px;
     }
 
     label {
-      display: block;
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
     }
 
     textarea {
-      width: 100%;
-      height: 60px;
+      flex: 1;
       resize: none;
-      padding: 12px;
-      font-size: 15px;
+      padding: 10px;
+      font-size: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.5);
+      font-family: 'Roboto', sans-serif;
       box-sizing: border-box;
-      background-color: rgba(255, 255, 255, 0.5); /* white w/ 50% opacity */
     }
 
     button {
-      padding: 12px 24px;
-      font-size: 15px;
+      margin-top: 6px;
+      padding: 10px 20px;
+      font-size: 12px;
       border: none;
       border-radius: 6px;
       background: linear-gradient(to right, #f0f0f0, #e0e0e0);
       cursor: pointer;
       align-self: flex-start;
-      margin-top: 10px;
     }
   </style>
 </head>
@@ -65,25 +74,21 @@
   <div class="form-container">
     <form id="form">
       <div class="form-group">
-        <label>Setting (Background):</label>
+        <label for="setting">Setting (Background):</label>
         <textarea id="setting" placeholder="Write your story here." required></textarea>
       </div>
-
       <div class="form-group">
-        <label>Rising Action – The inciting incident was:</label>
+        <label for="rising">Rising Action – The inciting incident was:</label>
         <textarea id="rising" placeholder="Write your story here." required></textarea>
       </div>
-
       <div class="form-group">
-        <label>Climax – The turning point was:</label>
+        <label for="climax">Climax – The turning point was:</label>
         <textarea id="climax" placeholder="Write your story here." required></textarea>
       </div>
-
       <div class="form-group">
-        <label>Resolution – The situation was resolved by:</label>
+        <label for="resolution">Resolution – The situation was resolved by:</label>
         <textarea id="resolution" placeholder="Write your story here." required></textarea>
       </div>
-
       <button type="submit">Submit</button>
     </form>
   </div>
